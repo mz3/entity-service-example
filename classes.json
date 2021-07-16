@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Person",
+        "documentation": "Documentation for Person",
+        "type": "typeof Person",
+        "constructors": [
+            {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "documentation": "- The name of the employee.",
+                        "type": "string"
+                    }
+                ],
+                "returnType": "Person",
+                "documentation": "constructor documentation"
+            }
+        ]
+    }
+]

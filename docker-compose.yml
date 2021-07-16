@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      PGDATA: /data/postgres
+      POSTGRES_USER: entity5
+      POSTGRES_PASSWORD: entity5
+      POSTGRES_DB: entity5
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - 9092:9092
+    environment:
+      DOCKER_API_VERSION: 1.22
+      # Annoying but you need to update this when your IP changes
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.0.10
+      # KAFKA_ADVERTISED_HOST_NAME: 192.168.0.3
+      # KAFKA_ADVERTISED_HOST_NAME: 10.0.0.90
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
