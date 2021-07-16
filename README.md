@@ -38,7 +38,7 @@ KAFKA_PORT=9092" >> lib/kafka/.env
 bin/http.ts # ^C to stop
 
 # start kafka service
-bin/http.ts # ^C to stop
+bin/kafka.ts # ^C to stop
 
 # test request/response over kafka queue
 ts-node lib/kafka/src/service.test.ts
