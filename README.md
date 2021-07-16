@@ -18,7 +18,7 @@ Getting started:
 ```bash
 # install yarn deps (root and package folders)
 # todo: refactor (lerna?)
-for dir in . lib/*; do (cd $dir && yarn)
+for dir in . lib/*; do (cd $dir && yarn); done
 
 # set your private ip in docker-compose.yml
 # it's an unfortunate quirk of this particular kafka image
